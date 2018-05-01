@@ -1,5 +1,5 @@
 # Full Stack Developer Challenge
-This is an interview challenge for the post of full stack developer at Zodhana Mobile Solutions Private Limited.
+This is a programming challenge for a possible full stack developer at Zodhana Mobile Solutions Private Limited.
 
 ## Requirements
 Design a web application that allows authors to publish stories.
