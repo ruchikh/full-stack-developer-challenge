@@ -1,5 +1,5 @@
 # Full Stack Developer Challenge
-This is a programming challenge for a possible full stack developer at Zodhana Mobile Solutions Private Limited.
+This is a programming challenge for a possible full stack developer at Inkredo.
 
 ## Requirements
 Design a web application that allows authors to publish stories.
@@ -22,7 +22,7 @@ Design a web application that allows authors to publish stories.
 * Test driven development
 * Description of design and technologies used
 * Server side API (using a programming language and/or framework of your choice)
-  * Full stack web developers at ZMS currently use Python and/or Golang on the server (with PostgreSQL for the database)
+  * Full stack web developers at Inkredo currently use Python, React and Node on the server (with PostgreSQL for the database)
 * Web app
   * Using a modern web framework (preferably React) that talks to the server side
     * This should integrate with your API, but it's fine to use static responses for some of it 
