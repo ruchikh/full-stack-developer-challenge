@@ -1,68 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Full Stack Developer Challenge
+This is a programming challenge for a possible full stack developer at Inkredo.
 
-## Available Scripts
+## Requirements
+Design a web application that allows authors to publish stories.
 
-In the project directory, you can run:
+### Author view
+* Authentication
 
-### `npm start`
+### Home view
+* View all stories with unread (by the author) ones shown first
+* Filtering and sorting
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Story view
+* Create/delete/update/view drafts
+* Publish draft as a story
+* Upvote stories
+* Drafts are only visible to the author
+* Stories are visible to everyone
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Challenge Scope
+* Test driven development
+* Description of design and technologies used
+* Server side API (using a programming language and/or framework of your choice)
+  * Full stack web developers at Inkredo currently use Python, React and Node on the server (with PostgreSQL for the database)
+* Web app
+  * Using a modern web framework (preferably React) that talks to the server side
+    * This should integrate with your API, but it's fine to use static responses for some of it 
+* Document all assumptions made
+* Complete solutions aren't required, but what you do submit needs to run.
 
-### `npm test`
+## How to complete this challenge
+* Fork this repo on GitHub
+* Complete the design and code as defined to the best of your abilities
+* Complete your work in your own github repo and send the results to us at devs@inkredo.in
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## What are we looking for? What does this prove?
+* Assumptions you make given limited requirements
+* Technology and design choices
+* Identify areas of your strengths
+* This is not a pass or fail test, this will serve as a common ground that we can deep dive together into specific issues
+* Write code as if you are writing code in a team for a production app. Treat it as if you are releasing it to the public.
+* Finally, we take pride in the code we write so ensure that your code is well encapsulated and follows a consistent convention. 
