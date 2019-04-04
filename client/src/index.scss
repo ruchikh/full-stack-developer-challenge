@@ -32,9 +32,17 @@ code {
   width: 100%;
   .app-name {
     color: #039be5;
-    font-size: 27px;
+    font-size: 29px;
     font-weight: 600;
     margin-left: 20px;
+  }
+  button{
+    background: transparent;
+    border: none;
+    color: #039be5;
+    cursor: pointer;
+    margin-right: 1em;
+    font-size: 1.3em;
   }
 }
 
@@ -196,11 +204,19 @@ ul {
     button {
       margin-right: 0.5rem;
       padding: 0.5rem;
-      background: #444;
+      background: #039be5;
       color: #fff;
+      font-weight: 500;
       border: 0.5px solid transparent;
       border-radius: 2px;
       cursor: pointer;
     }
+  }
+}
+
+.article-details{
+  i{
+    margin-right: 1em;
+    color: #039be5;
   }
 }
