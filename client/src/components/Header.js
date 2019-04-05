@@ -31,7 +31,7 @@ class Header extends Component {
 	      	<Link to='/signup'>
 	      		Signup
 	      	</Link>
-      	</div> : <Link to="/signup"><button onClick={this.handleLogout}>Logout</button></Link>
+      	</div> : <Link to="/signup"><button onClick={this.handleLogout}><i class="fas fa-sign-out-alt"></i></button></Link>
 
       }
       </div>
