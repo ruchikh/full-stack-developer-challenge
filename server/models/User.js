@@ -4,9 +4,9 @@ const SALT_FACTOR = 10;
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
-    username: {type: String},
+    username: {type: String, unique: true},
     email: {type: String, required: true},
-    password: {type: String},
+    password: {type: String, required:true},
   });
 
   userSchema.methods.verifyPassword = function(userPassword, cb) {

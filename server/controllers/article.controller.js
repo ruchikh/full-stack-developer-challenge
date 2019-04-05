@@ -8,6 +8,7 @@ module.exports = {
       body: reqBody.body
     });
     newArticle.save((err, article) => {
+      console.log(article)
       if (err) {
         res.json({
           msg: Error
@@ -22,6 +23,7 @@ module.exports = {
 
   getArticles: (req, res) => {
     Article.find((err, allArticles) => {
+      console.log(allArticles, "articles")
       if (err) {
         res.json({
           msg: Error

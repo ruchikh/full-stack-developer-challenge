@@ -4,7 +4,7 @@ const userController = require("./../controllers/user.controller")
 
 const router = express.Router();
 
-router.post("/api/article", userController.isLoggedIn ,articleController.postArticle);
+router.post("/api/article" ,articleController.postArticle);
 
 router.get("/api/article", articleController.getArticles);
 
