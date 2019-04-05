@@ -26,10 +26,10 @@ class Header extends Component {
       	(Object.keys(currentUser).length === 0) ? 
       	<div className="header-links">
 	      	<Link to='/login'>
-	      		Login
+	      		<i class="fas fa-sign-in-alt"></i>
 	      	</Link>
 	      	<Link to='/signup'>
-	      		Signup
+	      		<i class="fas fa-user-plus"></i>
 	      	</Link>
       	</div> : <Link to="/signup"><button onClick={this.handleLogout}><i class="fas fa-sign-out-alt"></i></button></Link>
 
