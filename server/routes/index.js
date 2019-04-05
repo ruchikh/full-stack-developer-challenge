@@ -10,9 +10,9 @@ router.get("/api/article", articleController.getArticles);
 
 router.get("/api/article/:id", articleController.getArticleDetails);
 
-router.put("/api/article/:id/edit", userController.isLoggedIn, articleController.updateArticle);
+router.put("/api/article/:id/edit",  articleController.updateArticle);
 
-router.delete("/api/article/:id/delete", userController.isLoggedIn, articleController.deleteArticle);
+router.delete("/api/article/:id/delete",  articleController.deleteArticle);
 
 
 router.post('/api/signup', userController.signUp)
