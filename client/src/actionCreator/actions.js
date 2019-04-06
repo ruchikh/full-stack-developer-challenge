@@ -73,6 +73,25 @@ export function rePostArticle(data, id, cb) {
 
 /*user Action*/
 
+export function readArticle(id, cb) {
+  return dispatch => {
+    fetch(`${url}/addarticle/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(data => {
+        dispatch({ type: "READ_ARTICLE" });
+        cb(true);
+      });
+  };
+}
+
+
+
 export const signUpAction = (data) => {
     return (dispatch) => {
       fetch(`${url}/signup`, {
@@ -106,7 +125,7 @@ export const signUpAction = (data) => {
         console.log(data)
         if(data.user._id) {
           dispatch({type: 'LOGIN_SUCCESS', data: data.user});
-          localStorage.setItem('userInfo', JSON.stringify(data.user))
+          // localStorage.setItem('userInfo', JSON.stringify(data.user))
           cb(true)
         } else {
           dispatch({type: 'LOGIN_ERR', data})
@@ -122,6 +141,7 @@ export const signUpAction = (data) => {
       fetch(`/api/isLoggedIn`)
       .then(res => res.json())
       .then(data => {
+        console.log(data)
         dispatch({type: 'LOGIN_SUCCESS', data: data.user})
       })
     }
@@ -130,6 +150,7 @@ export const signUpAction = (data) => {
     return dispatch => {
       fetch('/api/logout').then(res => res.json())
       .then(data => {
+        console.log(data)
         dispatch({type: 'LOGOUT_SUCCESS', data})
         cb(true)
       })

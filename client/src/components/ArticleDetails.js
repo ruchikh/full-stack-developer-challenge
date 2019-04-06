@@ -6,6 +6,10 @@ import {
 } from "../actionCreator/actions";
 
 class ArticleDetails extends Component {
+  state = {
+    isRead: false
+  }
+  
   componentDidMount = () => {
     const id = this.props.match.params.id;
     this.props.dispatch(singleArticleDetails(id));
@@ -46,7 +50,7 @@ class ArticleDetails extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     article: state.targetArticle,
     currentUser: state.currentUserData

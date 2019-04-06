@@ -44,6 +44,13 @@ export default function rootReducer(state = initState, action) {
         currentUserId: ''
       }
     }
+    case 'READ_ARTICLE': {
+      return {
+        ...state,
+        currentUserData: {},
+        currentUserId: ''
+      }
+    }
     default:
       return state;
   }

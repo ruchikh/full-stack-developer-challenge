@@ -15,10 +15,10 @@ const store = createStore(
   composeEnhancers(applyMiddleware(thunk))
 );
 
-if(localStorage.userInfo){
-  const user = localStorage.getItem('userInfo')
-  store.dispatch({type: 'LOGIN_SUCCESS', data: user})
-}
+// if(localStorage.userInfo){
+//   const user = localStorage.getItem('userInfo')
+//   store.dispatch({type: 'LOGIN_SUCCESS', data: user})
+// }
 
 ReactDOM.render(
   <Provider store={store}>

@@ -38,8 +38,6 @@ module.exports = {
     })(req, res, next);
   },
  isLoggedIn : (req, res) => {
-   console.log("called")
-   console.log(req.user)
     if(req.user) {
       User.findOne({_id : req.user._id}, (err, data) => {
         if(data) {
@@ -54,11 +52,29 @@ module.exports = {
       })
     }
   },
+
+
   logout:(req, res) => {
     req.session.destroy();
     res.status(200).json({
       msg : "Session is removed"
     })
-  }
+  },
+
+  readArticles: (req, res) => {
+    const id = req.user._id
+    User.findByIdAndUpdate(id, {$push: {isRead: req.params.id}}, {new :true}, (err, post) => {
+        if(err) return res.json({
+          message: err,
+          success: false
+        });
+          return res.json({
+          message: "Article Added"
+        });
+    })
+  },
+
+  
 
 }
+

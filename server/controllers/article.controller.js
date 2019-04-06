@@ -34,11 +34,12 @@ module.exports = {
 
   getArticleDetails: (req, res) => {
     const id = req.params.id;
-    Article.find({ _id: id }, (err, article) => {
+    Article.find({ _id: id }).populate("author").exec((err, article) => {
       if (err) throw err;
       res.json(article);
     });
   },
+  
   updateArticle: (req, res) => {
     const reqBody = req.body;
     const id = req.params.id;

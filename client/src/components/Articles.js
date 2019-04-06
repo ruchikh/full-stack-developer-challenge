@@ -1,18 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { postArticle, getArticle } from "../actionCreator/actions";
+import { postArticle, getArticle, readArticles, isLoggedIn } from "../actionCreator/actions";
 import { Link } from "react-router-dom";
 
 class Articles extends Component {
   state = {
     title: "",
     body: "",
-    createArticle: false
+    createArticle: false,
+    isRead: false
   };
 
+  handleRead = (id) => {
+    fetch(`http://localhost:8000/api/addarticle/${id}`)
+     .then(res => res.json())
+      .then(data => {
+        console.log(data, "read Article")
+      });
+  }
   componentDidMount = () => {
-
     this.props.dispatch(getArticle());
+    this.props.dispatch(isLoggedIn())
   };
   
   handleTitle = e => {
@@ -25,13 +33,15 @@ class Articles extends Component {
       body: e.target.value
     });
   };
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.dispatch(
       postArticle(
         {
           title: this.state.title,
-          body: this.state.body
+          body: this.state.body,
+          author: this.props.currentUser
         },
         succeed => {
           if (succeed) {
@@ -43,6 +53,7 @@ class Articles extends Component {
     document.querySelector("input").value = "";
     document.querySelector("textarea").value = "";
   };
+
   handleCreate = () => {
     const { currentUser } = this.props;
     if (Object.keys(currentUser).length !== 0) {
@@ -53,9 +64,11 @@ class Articles extends Component {
       this.props.history.push('/login');
     }
   };
+
   render() {
     const { articles, currentUser } = this.props;
     const { createArticle } = this.state;
+
     return (
       <div className="create-article">
         <i class="fas fa-plus-circle add-title" onClick={this.handleCreate} />
@@ -86,12 +99,13 @@ class Articles extends Component {
               <h5>Recent Blogs</h5>
               {articles &&
                 articles.map((article, i) => (
-                  <li key={i}>
+                  <li key={i} onClick={()=>this.handleRead(article._id)}>
                     <Link
                       to={`/article/${article._id}`}
                       className="article-title"
+                      
                     >
-                      {article.title}
+                    {article.title}
                     </Link>
                   </li>
                 ))}

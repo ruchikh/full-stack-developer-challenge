@@ -9,28 +9,32 @@ class Header extends Component {
     console.log("logout")
     this.props.dispatch(loggedOut((succeed) => {
       if(succeed){
-        localStorage.removeItem("userInfo");
-        this.props.push.history('/');
+        // localStorage.removeItem("userInfo");
+        this.props.push.history('/login');
       }
     }));
   }
 
    render() {
     const { currentUser } = this.props;
+    console.log(currentUser._id)
     return (
       <div>
       
       {
 
-      	(Object.keys(currentUser).length === 0) ? 
+      	(!currentUser._id) ? 
       	<div className="header-links">
 	      	<Link to='/login'>
-	      		<i class="fas fa-sign-in-alt"></i>
+	      		<i className="fas fa-sign-in-alt"></i>
 	      	</Link>
 	      	<Link to='/signup'>
-	      		<i class="fas fa-user-plus"></i>
+	      		<i className="fas fa-user-plus"></i>
 	      	</Link>
-      	</div> : <Link to="/signup"><button onClick={this.handleLogout}><i class="fas fa-sign-out-alt"></i></button></Link>
+      	</div> : <div>
+        <button onClick={this.handleLogout}><i class="fas fa-sign-out-alt"></i></button>
+        <p>{currentUser.username}</p>
+        </div>
 
       }
       </div>

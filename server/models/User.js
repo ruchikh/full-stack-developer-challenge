@@ -7,6 +7,8 @@ const userSchema = new Schema({
     username: {type: String, unique: true},
     email: {type: String, required: true},
     password: {type: String, required:true},
+    isRead: [{type: Schema.Types.ObjectId, ref:"Article"}]
+    
   });
 
   userSchema.methods.verifyPassword = function(userPassword, cb) {
