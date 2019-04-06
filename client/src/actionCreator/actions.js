@@ -1,6 +1,7 @@
 const url = "http://localhost:8000/api";
 
 export function postArticle(data, cb) {
+  console.log(data)
   return dispatch => {
     fetch(`${url}/article`, {
       method: "POST",

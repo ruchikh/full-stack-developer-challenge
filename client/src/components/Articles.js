@@ -41,7 +41,7 @@ class Articles extends Component {
         {
           title: this.state.title,
           body: this.state.body,
-          author: this.props.currentUser
+          author: this.props.currentUser._id
         },
         succeed => {
           if (succeed) {

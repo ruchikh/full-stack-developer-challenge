@@ -3,10 +3,7 @@ const Article = require("./../models/Article");
 module.exports = {
   postArticle: (req, res) => {
     const reqBody = req.body;
-    const newArticle = new Article({
-      title: reqBody.title,
-      body: reqBody.body
-    });
+    const newArticle = new Article(req.body);
     newArticle.save((err, article) => {
       if (err) {
         res.json({
