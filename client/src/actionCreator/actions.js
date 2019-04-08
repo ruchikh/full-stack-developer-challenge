@@ -71,6 +71,12 @@ export function rePostArticle(data, id, cb) {
   };
 }
 
+export function getAllArticleByUserId(userId){
+  return dispatch => {
+    fetch(`${url}/articles/user/${userId}`).then(res => res.json()).then(article => console.log(article))
+  }
+}
+
 
 /*user Action*/
 

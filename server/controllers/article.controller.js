@@ -66,5 +66,9 @@ module.exports = {
             res.json(articles)
         })
     })
+  },
+
+  getAllArticleByUserId: (req, res) => {
+    const id = req.params.userId
   }
 };

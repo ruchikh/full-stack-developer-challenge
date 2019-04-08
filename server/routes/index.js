@@ -16,6 +16,9 @@ router.put("/api/article/:id/edit",  articleController.updateArticle);
 
 router.delete("/api/article/:id/delete",  articleController.deleteArticle);
 
+router.get("/api/article/user/:userId",  articleController.getAllArticleByUserId);
+
+
 
 router.post('/api/signup', userController.signUp)
 

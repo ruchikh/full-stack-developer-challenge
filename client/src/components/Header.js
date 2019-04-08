@@ -9,7 +9,6 @@ class Header extends Component {
     console.log("logout")
     this.props.dispatch(loggedOut((succeed) => {
       if(succeed){
-        // localStorage.removeItem("userInfo");
         this.props.push.history('/login');
       }
     }));
@@ -33,7 +32,7 @@ class Header extends Component {
 	      	</Link>
       	</div> : <div>
         <button onClick={this.handleLogout}><i class="fas fa-sign-out-alt"></i></button>
-        <p>{currentUser.username}</p>
+        <span className="username">{currentUser.username[0].toUpperCase()}</span>
         </div>
 
       }
