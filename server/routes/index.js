@@ -4,6 +4,8 @@ const userController = require("./../controllers/user.controller")
 
 const router = express.Router();
 
+router.get('/api/article/:id/upvotes', test,articleController.upvotePost);
+
 router.post("/api/article" ,articleController.postArticle);
 
 router.get("/api/article", articleController.getArticles);
@@ -16,8 +18,13 @@ router.put("/api/article/:id/edit",  articleController.updateArticle);
 
 router.delete("/api/article/:id/delete",  articleController.deleteArticle);
 
-router.get("/api/article/user/:userId",  articleController.getAllArticleByUserId);
+router.get("/api/articles/user/:userId",  articleController.getAllArticleByUserId);
 
+
+function test(req,res,next){
+	console.log('test upvote')
+	next();
+}
 
 
 router.post('/api/signup', userController.signUp)

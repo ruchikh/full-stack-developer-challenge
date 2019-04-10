@@ -1,7 +1,6 @@
 const url = "http://localhost:8000/api";
 
 export function postArticle(data, cb) {
-  console.log(data)
   return dispatch => {
     fetch(`${url}/article`, {
       method: "POST",
@@ -23,7 +22,6 @@ export function getArticle() {
     fetch(`${url}/article`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         dispatch({ type: "ALL_ARTICLES", data: data.allArticles });
       });
   };
@@ -47,7 +45,6 @@ export function deleteArticle(id, cb){
         "Content-Type": "application/json"
       },
     }).then(res => res.json()).then(articles => {
-      console.log(articles, "delete Article")
       dispatch({
         type: "ALL_ARTICLES",
         articles
@@ -72,10 +69,33 @@ export function rePostArticle(data, id, cb) {
 }
 
 export function getAllArticleByUserId(userId){
+  console.log(userId)
   return dispatch => {
-    fetch(`${url}/articles/user/${userId}`).then(res => res.json()).then(article => console.log(article))
+    fetch(`${url}/articles/user/${userId}`).then(res => res.json()).then(article => {
+      dispatch({
+        type: "USER_ARTICLE",
+        article
+      })})
   }
 }
+
+
+export function upvotePost(id){
+  console.log(id)
+  return dispatch => {
+    console.log(`http://localhost:8000/api/article/${id}/upvotes`)
+    fetch(`http://localhost:8000/api/article/${id}/upvotes`)
+     .then(res => res.json())
+      .then(data => {
+        console.log(data, "read Article")
+        dispatch({ type: "TARGET_ARTICLE", data: data[0] });
+        // dispatch({ type: "ALL_ARTICLES", data: data.allArticles });
+      });
+
+  // fetch(`${url}/article/${id}/upvotes`).then(res => res.json()).then(post => console.log(post))
+  }
+}
+
 
 
 /*user Action*/
@@ -109,7 +129,6 @@ export const signUpAction = (data) => {
         body : JSON.stringify(data)
       }).then(res => res.json())
       .then(data => {
-          console.log(data)
         if(data.responseStatus === '200') {
           dispatch({type: 'SIGNUP_SUCCESS', data})
         } else {
@@ -129,10 +148,9 @@ export const signUpAction = (data) => {
         body : JSON.stringify(data)
       }).then(res => res.json())
       .then(data => {
-        console.log(data)
-        if(data.user._id) {
+        console.log(data,"ruchi")
+        if(data) {
           dispatch({type: 'LOGIN_SUCCESS', data: data.user});
-          // localStorage.setItem('userInfo', JSON.stringify(data.user))
           cb(true)
         } else {
           dispatch({type: 'LOGIN_ERR', data})
@@ -148,7 +166,6 @@ export const signUpAction = (data) => {
       fetch(`/api/isLoggedIn`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         dispatch({type: 'LOGIN_SUCCESS', data: data.user})
       })
     }
@@ -157,7 +174,6 @@ export const signUpAction = (data) => {
     return dispatch => {
       fetch('/api/logout').then(res => res.json())
       .then(data => {
-        console.log(data)
         dispatch({type: 'LOGOUT_SUCCESS', data})
         cb(true)
       })

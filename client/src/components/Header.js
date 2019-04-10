@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loggedOut } from "../actionCreator/actions";
+import { loggedOut, getAllArticleByUserId } from "../actionCreator/actions";
 import { Link } from "react-router-dom";
 
 class Header extends Component {
@@ -14,9 +14,12 @@ class Header extends Component {
     }));
   }
 
+  // hadleProfile = (userId) => {
+  //   console.lof("handleUserprofile")
+  //   this.props.dispatch(getAllArticleByUserId(userId))
+  // }
    render() {
     const { currentUser } = this.props;
-    console.log(currentUser._id)
     return (
       <div>
       
@@ -32,7 +35,7 @@ class Header extends Component {
 	      	</Link>
       	</div> : <div>
         <button onClick={this.handleLogout}><i class="fas fa-sign-out-alt"></i></button>
-        <span className="username">{currentUser.username[0].toUpperCase()}</span>
+        <Link to="profile"><span className="username">{currentUser.username[0].toUpperCase()}</span></Link>
         </div>
 
       }

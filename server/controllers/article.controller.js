@@ -55,7 +55,8 @@ module.exports = {
 
   deleteArticle: (req, res) => {
     const id = req.params.id
-    Article.findOneAndDelete(id, (err, articles) => {
+    console.log(id, "delete article")
+    Article.findOneAndRemove(id, (err, articles) => {
       if(err) return res.json({
         err: "can not delete article"
       })
@@ -69,6 +70,33 @@ module.exports = {
   },
 
   getAllArticleByUserId: (req, res) => {
-    const id = req.params.userId
+    const id = req.params.userId;
+    console.log(id, "userIdauthor")
+    Article.find({author: id}, (err, article) => {
+      if(err) res.json({
+        err: "can not get article"
+      })
+        res.json(article)                                                                   
+    })
+  },
+
+  upvotePost: (req, res) => {
+    const postId = req.params.id;
+    const userId = req.user._id;
+    console.log(userId,postId,"new chwck")
+    Article.findByIdAndUpdate(postId, {$addToSet: {upvote: userId}}, (err, article) => {
+      if(err) res.json({
+        err: "can not add likes"
+      })
+      Article.find({_id:postId}).populate("author").exec((err, article) => {
+      if (err) {
+        res.json({
+          msg: Error
+        });
+      } else {
+        res.json( article );
+      }
+    });
+    })
   }
-};
+};                                                    

@@ -3,7 +3,9 @@ const initState = {
   targetArticle: {},
   currentUserData: {},
   currentUserId: '',
-  errMsg: ''
+  errMsg: '',
+  currentUserArticles: []
+
 };
 
 export default function rootReducer(state = initState, action) {
@@ -49,6 +51,12 @@ export default function rootReducer(state = initState, action) {
         ...state,
         currentUserData: {},
         currentUserId: ''
+      }
+    }
+    case "USER_ARTICLE":{
+      return {
+        ...state,
+        currentUserArticles: action.article
       }
     }
     default:

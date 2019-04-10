@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-  singleArticleDetails, deleteArticle
+  singleArticleDetails, deleteArticle, isLoggedIn, upvotePost
 } from "../actionCreator/actions";
 
 class ArticleDetails extends Component {
@@ -13,7 +13,15 @@ class ArticleDetails extends Component {
   componentDidMount = () => {
     const id = this.props.match.params.id;
     this.props.dispatch(singleArticleDetails(id));
+    this.props.dispatch(isLoggedIn())
   };
+
+  handleUpvote = ( ) => {
+    const id = this.props.match.params.id;
+    console.log(id,"handleupvote")
+    this.props.dispatch(upvotePost(id))
+
+  }
 
   handleDelete = (id) => {
     this.props.dispatch(deleteArticle(id, (succeed) => {
@@ -26,19 +34,25 @@ class ArticleDetails extends Component {
 
   render() {
     const { article, match, currentUser } = this.props;
+    console.log(article.author,"ArtDetails author")
     return (
       <div className="article-details">
         <div className="edit-link">
-          {
-            (Object.keys(currentUser).length !== 0) ? (
+          {article.author && (article.author._id === currentUser._id) ? (
               <>
                 <Link to={`/article/${match.params.id}/edit`}>
                   <i className="fas fa-edit" />
                 </Link>
                 <i className="fas fa-trash" onClick={(id) => this.handleDelete(match.params.id)}/>
+
+                
               </>
             ) : '' 
           }
+          <div>
+            <i onClick={this.handleUpvote} className="fas fa-thumbs-up">Upvote</i>
+            <p>{article.upvote && article.upvote.length}</p>
+          </div>
          
         </div>
         <div className="blog-wrapper">
@@ -52,8 +66,9 @@ class ArticleDetails extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    articles: state.articles,
     article: state.targetArticle,
-    currentUser: state.currentUserData
+    currentUser: state.currentUserData,
   };
 };
 

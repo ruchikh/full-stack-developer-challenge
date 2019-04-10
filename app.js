@@ -5,6 +5,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const passport = require('passport');
 const session = require('express-session')
+const logger = require('morgan');
 const cors = require('cors')
 const MongoStore = require('connect-mongo')(session);
 
@@ -39,6 +40,8 @@ mongoose.connect(
   saveUninitialized: true,
   
 }))
+
+app.use(logger('dev'))
 
 app.use(passport.initialize());
 app.use(passport.session());

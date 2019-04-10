@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { postArticle, getArticle, readArticles, isLoggedIn } from "../actionCreator/actions";
+import { postArticle, getArticle, readArticles, isLoggedIn, getAllArticleByUserId } from "../actionCreator/actions";
 import { Link } from "react-router-dom";
 
 class Articles extends Component {
@@ -18,19 +18,15 @@ class Articles extends Component {
         console.log(data, "read Article")
       });
   }
+  
   componentDidMount = () => {
     this.props.dispatch(getArticle());
     this.props.dispatch(isLoggedIn())
   };
   
-  handleTitle = e => {
-    this.setState({
-      title: e.target.value
-    });
-  };
   handleChange = e => {
     this.setState({
-      body: e.target.value
+      [e.target.name]: e.target.value
     });
   };
 
@@ -46,6 +42,7 @@ class Articles extends Component {
         succeed => {
           if (succeed) {
             this.props.dispatch(getArticle());
+
           }
         }
       )
@@ -80,7 +77,7 @@ class Articles extends Component {
                 <input
                   type="text"
                   placeholder="title"
-                  onChange={this.handleTitle}
+                  onChange={this.handleChange}
                   name="title"
                 />
                 <textarea
@@ -103,7 +100,6 @@ class Articles extends Component {
                     <Link
                       to={`/article/${article._id}`}
                       className="article-title"
-                      
                     >
                     {article.title}
                     </Link>

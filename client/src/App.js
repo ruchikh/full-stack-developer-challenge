@@ -6,6 +6,8 @@ import EditArticle from "./components/EditArticle";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import Header from "./components/Header";
+import Profile from "./components/Profile";
+
 
 class App extends Component {
   render() {
@@ -28,6 +30,8 @@ class App extends Component {
             <Route path="/article/:id/edit" exact component={EditArticle} />
             <Route path="/signup" exact component={SignUp} />
             <Route path="/login" exact component={Login} />
+            <Route path="/profile" exact component={Profile} />
+
           </Switch>
         </div>
       </BrowserRouter>
